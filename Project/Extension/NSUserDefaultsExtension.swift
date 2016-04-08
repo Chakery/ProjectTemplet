@@ -10,7 +10,7 @@ import Foundation
 
 extension NSUserDefaults {
     class func setVauleForKey(value value: Any, key: String) {
-        let userDefaults = NSUserDefaults()
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         if value is NSInteger || value is Int {
             userDefaults.setInteger(value as! NSInteger, forKey: key)
         } else if value is Float {
@@ -27,8 +27,12 @@ extension NSUserDefaults {
         userDefaults.synchronize()
     }
     
+    class func objectForKey(key: String) -> AnyObject? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(key)
+    }
+    
     class func removeValueForKey(key: String) {
-        let userDefaults = NSUserDefaults()
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.removeObjectForKey(key)
         userDefaults.synchronize()
     }
