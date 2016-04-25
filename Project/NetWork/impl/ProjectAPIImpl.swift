@@ -34,6 +34,14 @@ extension ProjectAPI: URLRequestConvertible {
         }
     }
     
+    /// Header
+    private var header: [String : String]? {
+        switch self {
+        default:
+            return nil
+        }
+    }
+    
     /// 参数
     private var parameters: [String: AnyObject]? {
         switch self {
@@ -65,6 +73,11 @@ extension ProjectAPI: URLRequestConvertible {
         let URL = NSURL(string: baseURL)
         let URLRequest = NSMutableURLRequest(URL: URL!.URLByAppendingPathComponent(path))
         URLRequest.HTTPMethod = method.rawValue
+        if let header = header {
+            for (key, value) in header {
+                URLRequest.addValue(value, forHTTPHeaderField: key)
+            }
+        }
         return encoding.encode(URLRequest, parameters: parameters).0
     }
 }

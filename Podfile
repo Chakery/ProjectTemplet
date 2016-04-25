@@ -12,7 +12,9 @@ pod 'RxSwift',    '~> 2.0'
 pod 'RxCocoa',    '~> 2.0'
 pod 'KeychainAccess'
 pod "SwiftDate"
+pod ‘HUD’, ‘~> 1.2.0’
 
+pod 'XCGLogger', '~> 3.3'
 pod 'FLEX', '~> 2.0', :configurations => ['Debug']
 end
 
